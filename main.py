@@ -11,20 +11,18 @@ from email.message import EmailMessage
 from datetime import datetime
 
 # --- CONFIGURATION ---
-SENDER_EMAIL = "chuamicrotech@gmail.com"
-SENDER_PASSWORD = "gvap zipq qack wbaj"
+SENDER_EMAIL = " "
+SENDER_PASSWORD = " "
 
 
 def get_path(relative_path, internal=True):
   
     if internal:
         try:
-            # PyInstaller temp folder
             base_path = sys._MEIPASS
         except Exception:
             base_path = os.path.dirname(os.path.abspath(__file__))
     else:
-        # Actual folder where the EXE is sitting
         if getattr(sys, "frozen", False):
             base_path = os.path.dirname(sys.executable)
         else:
@@ -35,7 +33,6 @@ def get_path(relative_path, internal=True):
 
 class Api:
     def __init__(self):
-        # Database sits OUTSIDE the exe so it's not read-only
         self.db_path = get_path("database.db", internal=False)
         self.init_db()
 
@@ -52,7 +49,6 @@ class Api:
             )
 
     def send_professional_email(self, recipient_email, model, case_id, status, remarks):
-        # 1. Check for empty email explicitly
         if not recipient_email or str(recipient_email).strip().lower() in ["none", ""]:
             print(f"DEBUG >>> Skipping email for {case_id}: No valid address.")
             return
@@ -83,7 +79,6 @@ class Api:
                 smtp.login(SENDER_EMAIL, SENDER_PASSWORD)
                 smtp.send_message(msg)
             
-            # This will now trigger only on actual success
             print(f"SUCCESS >>> Email sent to {recipient_email} for Case {case_id}")
 
         except Exception as e:
@@ -116,7 +111,6 @@ class Api:
         case_id = f"CMT-{random_id}"
         date = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-        # Check if email is just whitespace or empty
         email_val = email.strip() if email and email.strip() else None
 
         try:
@@ -126,7 +120,6 @@ class Api:
                     (case_id, phone, email_val, model, "Case Logged", remarks, date),
                 )
 
-            # Only attempt to send email if email_val is not None
             if email_val:
                 self.send_professional_email(
                     email_val, model, case_id, "Case Logged", remarks
@@ -155,7 +148,6 @@ class Api:
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
-                # Fetch current info to see if we have an email
                 cursor.execute(
                     "SELECT email, model, case_id, remarks FROM tickets WHERE id=?", (db_id,)
                 )
@@ -164,10 +156,8 @@ class Api:
                 if t:
                     conn.execute("UPDATE tickets SET status=? WHERE id=?", (new_status, db_id))
                     
-                    # Log the database change
                     print(f"DATABASE >>> Case {t[2]} status updated to {new_status}")
                     
-                    # Pass the email through our checker
                     self.send_professional_email(t[0], t[1], t[2], new_status, t[3])
                     return True
             return False
@@ -185,11 +175,10 @@ class Api:
         
 
 if __name__ == "__main__":
-    # Essential for some Windows environments
+
     os.environ["WEBKIT_DISABLE_COMPOSITING_MODE"] = "1"
 
     api = Api()
-    # GUI is internal (bundled)
     gui_path = get_path("gui.html")
 
     window = webview.create_window(
@@ -198,6 +187,6 @@ if __name__ == "__main__":
         js_api=api,
         width=1350,
         height=850,
-        background_color="#0b0e14",  # Matches your CSS --bg
+        background_color="#0b0e14", 
     )
     webview.start()
