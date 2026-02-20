@@ -4,10 +4,6 @@
 
 ---
 
-## 🛠️ <i>Languages & Tools Used</i>
-
----
-
 ## 🎯 <i>About This Application</i>
 
 *This terminal serves as the internal administrative backbone for Chua Micro Tech, focusing on:*
