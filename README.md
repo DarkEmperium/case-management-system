@@ -1,10 +1,10 @@
-# 🛠️ <i>Chua Micro Tech Repair Terminal v1.0</i>
+🛠️ <i>Chua Micro Tech Repair Terminal v1.0</i>
 
 <i>A high-performance desktop command center engineered for specialized hardware diagnostics and precision-driven client management.</i>
 
 ---
 
-# 🎯 <i>About This Application</i>
+🎯 <i>About This Application</i>
 
 *This terminal serves as the internal administrative backbone for Chua Micro Tech, focusing on:*
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 🌟 <i>Features</i>
+🌟 <i>Features</i>
 
 * *Asynchronous "PyWebView" architecture connecting Python logic with a modern GUI*
 * *Snappy "Toast" notifications for real-time system feedback and database logs*
@@ -23,26 +23,26 @@
 
 ---
 
-## 📚 <i>Recent Updates</i>
+📚 <i>Recent Updates</i>
 
 * <i>🔭 Implemented advanced SQLite price-tracking architecture and professional email automation</i>  
 
 ---
 
-## 💻 <i>How To Access The Terminal</i>
+💻 <i>How To Access The Terminal</i>
 
 * *Clone the repository and install dependencies listed in requirements.txt*
 * *Execute `main.py` to initialize the Precision Lab management interface*
 
 ---
 
-## 👤 <i>About Us</i>
+👤 <i>About Us</i>
 
 <i>Based in Kulim, Kedah, Chua Micro Tech is a specialist center dedicated to precision engineering. We bridge the gap between standard maintenance and advanced component-level hardware repair for drones and computers.</i>
 
 ---
 
-## 🔧 <i>Future Enhancements</i>
+🔧 <i>Future Enhancements</i>
 
 * *Implement a **Live Parts Inventory** system for DJI component tracking*
 * *Integrate a **PDF Generator** for local physical invoice printing*
